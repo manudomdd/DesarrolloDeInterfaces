@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package gestionclientes.gui;
+package gestionClientes.gui;
 
-import gestionclientes.dto.Cliente;
+import gestionClientes.dto.Cliente;
 import java.util.Date;
 
 /**
