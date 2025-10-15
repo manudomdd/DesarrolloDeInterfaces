@@ -29,6 +29,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         model = new DefaultTableModel(null, tableIdentifiers);  
         jTable1.setModel(model); 
         l = new LogicaNegocio(); 
+        //para ponerle logo a la app
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/gestionClientes2/gui/img/logoApp.png")).getImage());
     }
 
     /**

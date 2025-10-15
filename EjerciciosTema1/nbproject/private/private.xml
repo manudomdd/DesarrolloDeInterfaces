@@ -7,6 +7,13 @@
             <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/ejercicio1/PantallaSecundaria.java</file>
             <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/ejercicio2/PantallaPrincipal.java</file>
             <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/ejercicio2/PantallaSecundaria.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes/gui/PantallaPrincipal.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes/gui/DialogoAlta.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes/dto/Cliente.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes2/gui/PantallaPrincipal.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes2/gui/DialogoAlta.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes2/dto/Cliente.java</file>
+            <file>file:/home/manu/NetBeansProjects/EjerciciosTema1/src/gestionClientes2/logicaNegocio/LogicaNegocio.java</file>
         </group>
     </open-files>
 </project-private>
