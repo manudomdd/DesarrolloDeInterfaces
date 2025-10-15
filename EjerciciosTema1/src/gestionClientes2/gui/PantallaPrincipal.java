@@ -116,17 +116,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         dialogoAlta.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    public void addToTable () {
-         
-        List<Cliente> listaClientes = l.getClientsList(); 
-        
-        for (Cliente c : listaClientes) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
-            String dateFormatted = sdf.format(c.getDate());
-            String[] row = {c.getName(), c.getSurname(), dateFormatted, c.getCity()};
-            model.addRow(row); 
-        }          
+    public void addToTable() {
+    model.setRowCount(0);
+
+    List<Cliente> listaClientes = l.getClientsList(); 
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+    
+    for (Cliente c : listaClientes) {
+        String dateFormatted = sdf.format(c.getDate());
+        String[] row = {c.getName(), c.getSurname(), dateFormatted, c.getCity()};
+        model.addRow(row);
     }
+}
     
     /**
      * @param args the command line arguments
