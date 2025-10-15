@@ -6,9 +6,13 @@ package gestionClientes2.gui;
 
 import gestionClientes2.dto.Cliente;
 import gestionClientes2.logicaNegocio.LogicaNegocio;
+import java.lang.System.Logger;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
@@ -22,32 +26,48 @@ import javax.swing.table.TableRowSorter;
 public class PantallaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName());
-    DefaultTableModel model; 
-    LogicaNegocio l; 
-
-    /**
-     * Creates new form PantallaPrincipal
-     */
+    private static final String[] TABLE_HEADERS = {"Nombre", "Apellidos", "Fecha alta", "Provincia"};
+    private static final String ICON_PATH = "/gestionClientes2/gui/img/logoApp.png";
+    
+    private DefaultTableModel model;
+    private LogicaNegocio logicaNegocio;
+    private TableRowSorter<TableModel> sorter;
+    
     public PantallaPrincipal() {
         initComponents();
-        String[] tableIdentifiers = {"Nombre", "Apellidos", "Fecha alta", "Provincia"}; 
-        model = new DefaultTableModel(null, tableIdentifiers);  
-        jTable1.setModel(model); 
-        l = new LogicaNegocio(); 
-        
-        //para ponerle logo a la app
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/gestionClientes2/gui/img/logoApp.png")).getImage());
-        
-        //para permitir ordenacion de tabla.
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
+        initLogic();
+        initTable();
+        initSorter();
+        initIcon();
+    }
+    
+    private void initLogic() {
+        logicaNegocio = new LogicaNegocio();
+    }
+    
+    private void initTable() {
+        model = new DefaultTableModel(null, TABLE_HEADERS);
+        jTable1.setModel(model);
+    }
+    
+    private void initSorter() {
+        sorter = new TableRowSorter<>(jTable1.getModel());
         jTable1.setRowSorter(sorter);
         
-        //ordenar por columna, orden inicial. ordenacion multiple.
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();         
-        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
-        sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortKeys);
+        sorter.setSortKeys(Arrays.asList(
+            new RowSorter.SortKey(0, SortOrder.ASCENDING),
+            new RowSorter.SortKey(1, SortOrder.ASCENDING)
+        ));
         sorter.sort();
+    }
+    
+    private void initIcon() {
+        URL iconUrl = getClass().getResource(ICON_PATH);
+        if (iconUrl != null) {
+            setIconImage(new ImageIcon(iconUrl).getImage());
+        } else {
+            logger.warning("No se pudo cargar el icono: " + ICON_PATH);
+        }
     }
 
     /**
@@ -112,14 +132,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        DialogoAlta dialogoAlta = new DialogoAlta(this, true, l); 
+        DialogoAlta dialogoAlta = new DialogoAlta(this, true, logicaNegocio); 
         dialogoAlta.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public void addToTable() {
     model.setRowCount(0);
 
-    List<Cliente> listaClientes = l.getClientsList(); 
+    List<Cliente> listaClientes = logicaNegocio.getClientsList(); 
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
     
