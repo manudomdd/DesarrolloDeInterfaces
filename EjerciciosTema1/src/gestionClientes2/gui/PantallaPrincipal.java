@@ -7,7 +7,10 @@ package gestionClientes2.gui;
 import gestionClientes2.dto.Cliente;
 import gestionClientes2.logicaNegocio.LogicaNegocio;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -38,6 +41,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         //para permitir ordenacion de tabla.
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
         jTable1.setRowSorter(sorter);
+        
+        //ordenar por columna, orden inicial. ordenacion multiple.
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();         
+        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+        sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
     }
 
     /**
