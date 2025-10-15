@@ -9,6 +9,8 @@ import gestionClientes2.logicaNegocio.LogicaNegocio;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -29,8 +31,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         model = new DefaultTableModel(null, tableIdentifiers);  
         jTable1.setModel(model); 
         l = new LogicaNegocio(); 
+        
         //para ponerle logo a la app
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/gestionClientes2/gui/img/logoApp.png")).getImage());
+        
+        //para permitir ordenacion de tabla.
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
+        jTable1.setRowSorter(sorter);
     }
 
     /**
