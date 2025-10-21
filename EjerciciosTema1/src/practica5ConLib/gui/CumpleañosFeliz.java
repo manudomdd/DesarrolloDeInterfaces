@@ -4,6 +4,8 @@
  */
 package practica5ConLib.gui;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Manu
@@ -37,6 +39,11 @@ public class CumpleañosFeliz extends javax.swing.JFrame {
         jLabel1.setText(org.openide.util.NbBundle.getMessage(CumpleañosFeliz.class, "CumpleañosFeliz.jLabel1.text")); // NOI18N
 
         jButton1.setText(org.openide.util.NbBundle.getMessage(CumpleañosFeliz.class, "CumpleañosFeliz.jButton1.text")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,6 +75,66 @@ public class CumpleañosFeliz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        // Obtener la fecha del JDateChooser
+        java.util.Date date = jDateChooser1.getDate();
+
+
+        // Validar que se haya seleccionado una fecha
+            if (date == null) {
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Por favor, selecciona una fecha de nacimiento.", 
+                    "Fecha no seleccionada", 
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+        // Convertir java.util.Date a LocalDate
+        LocalDate fechaIntroducida = date.toInstant()
+            .atZone(java.time.ZoneId.systemDefault())
+            .toLocalDate();
+
+        LocalDate hoy = LocalDate.now();
+
+        // Validar que la fecha no sea futura
+        if (fechaIntroducida.isAfter(hoy)) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "La fecha de nacimiento no puede ser futura.", 
+                "Fecha inválida", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Calcular la edad usando Period (más preciso)
+        java.time.Period periodo = java.time.Period.between(fechaIntroducida, hoy);
+        int edad = periodo.getYears();
+
+        // Calcular próximo cumpleaños
+        LocalDate proximoCumple = fechaIntroducida.withYear(hoy.getYear());
+
+        // Si el cumpleaños ya pasó este año, calcular para el año siguiente
+        if (proximoCumple.isBefore(hoy) || proximoCumple.isEqual(hoy)) {
+            proximoCumple = proximoCumple.plusYears(1);
+        }
+
+        // Calcular días hasta el próximo cumpleaños
+        long numDias = java.time.temporal.ChronoUnit.DAYS.between(hoy, proximoCumple);
+
+        // Mensaje especial si es hoy el cumpleaños
+        String mensaje;
+        if (numDias == 0) {
+            mensaje = "¡Feliz cumpleaños! Hoy cumples " + edad + " años.";
+        } else {
+            mensaje = "Tienes " + edad + " años y faltan " + numDias + 
+                      " día" + (numDias == 1 ? "" : "s") + " para tu siguiente cumpleaños.";
+        }
+
+        javax.swing.JOptionPane.showMessageDialog(this, mensaje);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
