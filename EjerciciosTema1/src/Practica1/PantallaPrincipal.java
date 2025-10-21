@@ -154,7 +154,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             public void insertUpdate(javax.swing.event.DocumentEvent e) { buttonRelease(); }
         });
     
-    jTextField2.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+        jTextField2.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void changedUpdate(javax.swing.event.DocumentEvent e) { buttonRelease(); }
             public void removeUpdate(javax.swing.event.DocumentEvent e) { buttonRelease(); }
             public void insertUpdate(javax.swing.event.DocumentEvent e) { buttonRelease(); }
