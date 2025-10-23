@@ -94,10 +94,10 @@ public class TablaMonstruos extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(48, 48, 48))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(134, 134, 134)
                 .addComponent(jButton1)
-                .addGap(125, 125, 125))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +145,6 @@ public class TablaMonstruos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
                 
-                // Si se hace clic en la tercera columna (índice 2)
                 if (column == 2 && model.getRowCount() > 0) {
                     mostrarMonstruoMasFuerte();
                 }
@@ -175,9 +174,8 @@ public class TablaMonstruos extends javax.swing.JFrame {
             }
         }
         
-        // Mostrar el pop-up
         String mensaje = String.format(
-            "🏆 MONSTRUO MÁS FUERTE 🏆\n\n" +
+            "🏆 MONSTRUO MAS FUERTE 🏆\n\n" +
             "Nombre: %s\n" +
             "Tipo: %s\n" +
             "Poder: %d",
@@ -186,7 +184,7 @@ public class TablaMonstruos extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(this, 
             mensaje, 
-            "Monstruo Más Fuerte", 
+            "Monstruo mas Fuerte", 
             JOptionPane.INFORMATION_MESSAGE);
     }
         
