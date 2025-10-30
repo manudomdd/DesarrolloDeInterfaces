@@ -20,6 +20,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        centrarPantalla(); 
         cambiarIcono(); 
     }
 
@@ -48,6 +49,10 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void centrarPantalla() {
+        setLocationRelativeTo(null); 
+    }
+    
     private void cambiarIcono() {
         try {
             Image icono = new ImageIcon(getClass().getResource("/bloque5_2/img/kuma.jpg")).getImage();
