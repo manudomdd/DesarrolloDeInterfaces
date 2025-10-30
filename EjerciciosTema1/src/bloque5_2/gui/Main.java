@@ -52,8 +52,11 @@ public class Main extends javax.swing.JFrame {
         try {
             Image icono = new ImageIcon(getClass().getResource("/bloque5_2/img/kuma.jpg")).getImage();
             this.setIconImage(icono);
+            if (icono == null) {
+                javax.swing.JOptionPane.showMessageDialog(rootPane, "Error al cargar el icono.");
+            }
         } catch (Exception e) {
-            System.out.println("No se pudo cargar el icono: " + e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Error al cargar el icono: " + e.getMessage());
         }
     }
     
