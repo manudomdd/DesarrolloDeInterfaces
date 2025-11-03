@@ -86,16 +86,12 @@ public class Generador extends javax.swing.JFrame {
                 "/bloque5_1/img/pollito.png",
                 "/bloque5_1/img/aguila.png"
             };
-
             Random random = new Random();
             String rutaAleatoria = rutasImagenes[random.nextInt(rutasImagenes.length)];
-
+            
             ImageIcon icono = new ImageIcon(getClass().getResource(rutaAleatoria));
-
             Image imagen = icono.getImage();
-
             jLabel1.setIcon(new ImageIcon(imagen));
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), 
                 "Error", JOptionPane.ERROR_MESSAGE);
