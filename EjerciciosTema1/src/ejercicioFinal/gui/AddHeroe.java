@@ -33,6 +33,8 @@ public class AddHeroe extends javax.swing.JDialog {
         initComponents();
         gestor = (GestorHeroes) parent;  
         centrarPantalla(); 
+        initButton(); 
+        addListeners(); 
         validation(); 
     }
 
@@ -154,8 +156,7 @@ public class AddHeroe extends javax.swing.JDialog {
 
     private void validation() {
         ValidationGroup group = validationPanel1.getValidationGroup(); 
-
-        // Validador personalizado para el nombre
+        
         group.add(jTextField1, new AbstractValidator<String>(String.class) {
             @Override
             public void validate(Problems problems, String compName, String model) {
@@ -169,7 +170,6 @@ public class AddHeroe extends javax.swing.JDialog {
             }
         });
 
-        // Validador para la fecha
         group.add(jDateChooser1.getDateEditor().getUiComponent(), 
             new AbstractValidator<String>(String.class) {
                 @Override
@@ -181,9 +181,34 @@ public class AddHeroe extends javax.swing.JDialog {
             }
         );
     }
+    
+    private void initButton() {
+        jButton1.setEnabled(false);
+        boolean textFilled = jTextField1.getText() != null && !jTextField1.getText().isBlank(); 
+        boolean dateFilled = jDateChooser1.getDate() != null; 
+        
+        if (textFilled && dateFilled) {
+            jButton1.setEnabled(true);
+        }
+    }
+    
+    private void addListeners() {
+        // Listener para JTextField
+        jTextField1.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { initButton(); }
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { initButton(); }
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { initButton(); }
+        });
+
+        // Listener para JDateChooser
+        jDateChooser1.addPropertyChangeListener("date", evt -> initButton());
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:     
         if (!existeHeroe(jTextField1.getText())) {
             gestor.addToTable(this.obtenerDatos());
             this.setVisible(false);

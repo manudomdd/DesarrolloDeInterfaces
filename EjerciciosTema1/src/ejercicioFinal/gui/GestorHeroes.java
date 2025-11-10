@@ -174,7 +174,7 @@ public class GestorHeroes extends javax.swing.JFrame {
         for (int i = 0; i < model.getRowCount(); i++) {
             String nombre = model.getValueAt(i, 0).toString(); 
             if (nombre.equalsIgnoreCase(nombreHeroe)) {
-                int option = javax.swing.JOptionPane.showConfirmDialog(rootPane, "¿Estás seguro de que quieres eliminar el héroe?"); 
+                int option = javax.swing.JOptionPane.showConfirmDialog(rootPane, "¿Estás seguro de que quieres eliminar el héroe " + nombre + "?"); 
                 switch (option) {
                     case 0: model.removeRow(i);
                     case 1: break; 
