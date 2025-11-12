@@ -60,13 +60,13 @@ En este módulo trabajamos con **Java** y **NetBeans** para crear interfaces gr�
 
 ```
 📦 desarrollo-interfaces/
-├── 📂 Proyecto1/
+├── 📂 EjerciciosTema1/
 │   ├── 📂 src/
 │   └── 📄 README.md
-├── 📂 Proyecto2/
+├── 📂 EjerciciosTema2/
 │   ├── 📂 src/
 │   └── 📄 README.md
-├── 📂 Proyecto3/
+├── 📂 EjerciciosTema3/
 │   ├── 📂 src/
 │   └── 📄 README.md
 └── 📄 README.md
