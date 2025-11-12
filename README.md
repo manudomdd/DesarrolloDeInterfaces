@@ -59,7 +59,7 @@ En este módulo trabajamos con **Java** y **NetBeans** para crear interfaces gr�
 ## 📁 Estructura del Repositorio
 
 ```
-📦 desarrollo-interfaces/
+📦 DesarrolloDeInterfaces/
 ├── 📂 EjerciciosTema1/
 │   ├── 📂 src/
 │   └── 📄 README.md
@@ -80,7 +80,7 @@ En este módulo trabajamos con **Java** y **NetBeans** para crear interfaces gr�
 
 ```bash
 git clone [url-del-repositorio]
-cd desarrollo-interfaces
+cd DesarrolloDeInterfaces
 ```
 
 ### 2️⃣ Abrir en NetBeans
