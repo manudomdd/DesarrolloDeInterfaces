@@ -6,6 +6,7 @@ package ejercicioFInalRepaso.gui;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.event.DocumentEvent;
 import org.netbeans.validation.api.AbstractValidator;
 import org.netbeans.validation.api.Problems;
 import org.netbeans.validation.api.ui.ValidationGroup;
@@ -135,9 +136,10 @@ public class AddHeroe extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    
     private void validation () {
         ValidationGroup group = validationPanel1.getValidationGroup(); 
         
@@ -146,13 +148,32 @@ public class AddHeroe extends javax.swing.JDialog {
             public void validate(Problems problems, String string, String model) {
                 if (model.isBlank() || model.isEmpty()) {
                     problems.add("El campo nombre no puede estar vacio");
+                    jButton1.setEnabled(false);
                 } else if (model.length() < 3) {
                     problems.add("La longitud del nombre debe de ser superior a 3");
+                    jButton1.setEnabled(false);
                 } else if (!model.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
                     problems.add("El nombre no puede contener numeros.");
-                }
+                    jButton1.setEnabled(false);
+                } 
             }  
         }); 
+        
+        group.add(jDateChooser1.getDateEditor().getUiComponent(), new AbstractValidator<String>(String.class) {
+            @Override
+            public void validate(Problems prblms, String string, String t) {
+                if (t == null || t.isEmpty()) {
+                    prblms.add("Es necesario introducir fecha");
+                    jButton1.setEnabled(false);
+                }
+            }       
+        });
+        
+        validationPanel1.addChangeListener(v -> {
+            if (validationPanel1.getProblem() == null) {
+                jButton1.setEnabled(true);
+            }
+        });
     } 
     
     private void centrarPantalla() {
