@@ -37,9 +37,9 @@
                       <EmptySpace pref="57" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jTextField1" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" max="32767" attributes="0"/>
+                          <Component id="jComboBox1" pref="132" max="32767" attributes="0"/>
                           <Component id="jSpinner1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jDateChooser1" pref="132" max="32767" attributes="0"/>
+                          <Component id="jCalendarComboBox1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -78,7 +78,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCalendarComboBox1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="22" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -145,8 +145,6 @@
     </Component>
     <Component class="org.netbeans.validation.api.ui.swing.ValidationPanel" name="validationPanel1">
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
-    </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
@@ -156,6 +154,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="de.wannawork.jcalendar.JCalendarComboBox" name="jCalendarComboBox1">
     </Component>
   </SubComponents>
 </Form>

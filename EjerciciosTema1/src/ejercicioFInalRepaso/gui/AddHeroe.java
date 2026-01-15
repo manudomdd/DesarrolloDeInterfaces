@@ -10,6 +10,7 @@ import javax.swing.event.DocumentEvent;
 import org.netbeans.validation.api.AbstractValidator;
 import org.netbeans.validation.api.Problems;
 import org.netbeans.validation.api.ui.ValidationGroup;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -47,8 +48,8 @@ public class AddHeroe extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
         jSpinner1 = new javax.swing.JSpinner();
         validationPanel1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        jCalendarComboBox1 = new de.wannawork.jcalendar.JCalendarComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,9 +94,9 @@ public class AddHeroe extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, 132, Short.MAX_VALUE)
                             .addComponent(jSpinner1)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))))
+                            .addComponent(jCalendarComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
                 .addGap(158, 158, 158)
@@ -112,9 +113,7 @@ public class AddHeroe extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1)))
+                    .addComponent(jTextField1))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +125,7 @@ public class AddHeroe extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCalendarComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18))
@@ -140,41 +139,36 @@ public class AddHeroe extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     
-    private void validation () {
-        ValidationGroup group = validationPanel1.getValidationGroup(); 
-        
-        group.add(jTextField1, new AbstractValidator<String>(String.class) {
+    private void validation() {
+    ValidationGroup group = validationPanel1.getValidationGroup();
+
+    // 1. VALIDADOR DEL NOMBRE (Solo añade problemas, NO toca el botón)
+    group.add(jTextField1, new AbstractValidator<String>(String.class) {
+        @Override
+        public void validate(Problems problems, String string, String model) {
+            if (model == null || model.trim().isEmpty()) {
+                problems.add("El campo nombre no puede estar vacío");
+            } else if (model.length() < 3) {
+                problems.add("La longitud del nombre debe ser superior a 3");
+            } else if (!model.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                problems.add("El nombre no puede contener números ni símbolos");
+            }
+        }
+    });
+
+        // 3. EL LISTENER FINAL (Aquí es donde se controla el botón)
+        validationPanel1.addChangeListener(new javax.swing.event.ChangeListener() {
             @Override
-            public void validate(Problems problems, String string, String model) {
-                if (model.isBlank() || model.isEmpty()) {
-                    problems.add("El campo nombre no puede estar vacio");
-                    jButton1.setEnabled(false);
-                } else if (model.length() < 3) {
-                    problems.add("La longitud del nombre debe de ser superior a 3");
-                    jButton1.setEnabled(false);
-                } else if (!model.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
-                    problems.add("El nombre no puede contener numeros.");
-                    jButton1.setEnabled(false);
-                } 
-            }  
-        }); 
-        
-        group.add(jDateChooser1.getDateEditor().getUiComponent(), new AbstractValidator<String>(String.class) {
-            @Override
-            public void validate(Problems prblms, String string, String t) {
-                if (t == null || t.isEmpty()) {
-                    prblms.add("Es necesario introducir fecha");
-                    jButton1.setEnabled(false);
-                }
-            }       
-        });
-        
-        validationPanel1.addChangeListener(v -> {
-            if (validationPanel1.getProblem() == null) {
-                jButton1.setEnabled(true);
+            public void stateChanged(javax.swing.event.ChangeEvent e) {
+                // Si el problema es NULL, significa que todo es válido -> Botón TRUE
+                // Si hay problema, devuelve un objeto -> Botón FALSE
+                jButton1.setEnabled(validationPanel1.getProblem() == null);
             }
         });
-    } 
+
+        // Ejecutamos una validación inicial para poner el botón en el estado correcto al abrir
+        group.performValidation();
+}
     
     private void centrarPantalla() {
         setLocationRelativeTo(null); 
@@ -185,7 +179,7 @@ public class AddHeroe extends javax.swing.JDialog {
         String nombre = jTextField1.getText().trim().toLowerCase(); 
         String poder = (String) jComboBox1.getSelectedItem(); 
         int nivel = (int) jSpinner1.getValue(); 
-        Date fecha = jDateChooser1.getDate(); 
+        Date fecha = jCalendarComboBox1.getDate(); 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); 
         String fechaStr = format.format(fecha); 
         
@@ -246,8 +240,8 @@ public class AddHeroe extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private de.wannawork.jcalendar.JCalendarComboBox jCalendarComboBox1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

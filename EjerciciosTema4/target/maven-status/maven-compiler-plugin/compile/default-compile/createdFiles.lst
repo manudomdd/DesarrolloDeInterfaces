@@ -1,0 +1,4 @@
+model/Persona.class
+dao/PersonaDAO.class
+repository/ConexionDB.class
+app/App.class

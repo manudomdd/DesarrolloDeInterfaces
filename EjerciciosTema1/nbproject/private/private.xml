@@ -3,50 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/practica3/gui/Encuesta.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/practica4Fechas/gui/RelojLoco.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/practica5SinLib/gui/FechaNacimiento.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/gestionClientes2/gui/DialogoAlta.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/gestionClientes2/gui/PantallaPrincipal.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/practica5ConLib/gui/CumpleañosFeliz.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/gestionClientes/gui/PantallaPrincipal.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/gestionClientes/gui/DialogoAlta.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/practica1/PantallaPrincipal.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicio2/PantallaPrincipal.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicio2/PantallaSecundaria.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_1/PantallaPrincipal.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_1/Bundle.properties</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_1/img/trofeo.png</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_2/TablaMonstruos.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_2/Bundle.properties</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_2/img/robot.png</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_3/gui/ListaDeTareasLocas.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque3_3/gui/TablaFiltrada.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque4_1/gui/Main.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque4_2/gui/Main.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/Bloque4_3/gui/Main.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_1/gui/Generador.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_1/img/aguila.png</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_1/img/pollito.png</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_1/img/tigre.png</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_1/gui/Bundle.properties</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_2/gui/Main.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_2/img/kuma.jpg</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_2/gui/Bundle.properties</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Main.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/PanelFondo.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Bundle.properties</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/img/puerta.png</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/img/casaEncantada.jpg</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/img/caramelos.jpg</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Trato.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Truco.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFinal/gui/GestorHeroes.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFInalRepaso/gui/AddHeroe.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFinal/gui/AddHeroe.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFinal/gui/Bundle.properties</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFInalRepaso/gui/GestionHeroes.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFInalRepaso/gui/Bundle.properties</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_1/gui/Generador.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Truco.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Trato.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/bloque5_3/gui/Main.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/practica3/gui/Encuesta.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFInalRepaso/gui/AddHeroe.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFInalRepaso/gui/GestionHeroes.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/practica5ConLib/gui/CumpleañosFeliz.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFinal/gui/AddHeroe.java</file>
+            <file>file:/home/manu/Escritorio/repositoriosDAM/DesarrolloDeInterfaces/EjerciciosTema1/src/ejercicioFinal/gui/GestorHeroes.java</file>
         </group>
     </open-files>
 </project-private>

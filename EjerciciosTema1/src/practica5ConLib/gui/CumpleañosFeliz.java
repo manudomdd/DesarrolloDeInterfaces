@@ -30,9 +30,9 @@ public class CumpleañosFeliz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jCalendarComboBox1 = new de.wannawork.jcalendar.JCalendarComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,22 +52,22 @@ public class CumpleañosFeliz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jCalendarComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jCalendarComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(43, 43, 43))
         );
@@ -78,7 +78,7 @@ public class CumpleañosFeliz extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // Obtener la fecha del JDateChooser
-        java.util.Date date = jDateChooser1.getDate();
+        java.util.Date date = jCalendarComboBox1.getDate();
 
 
         // Validar que se haya seleccionado una fecha
@@ -162,7 +162,7 @@ public class CumpleañosFeliz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private de.wannawork.jcalendar.JCalendarComboBox jCalendarComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
