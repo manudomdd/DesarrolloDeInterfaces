@@ -5,7 +5,7 @@ import repository.ConexionDB;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+import javax.swing.JOptionPane; // Importamos la librería para ventanas
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -19,25 +19,23 @@ public class App {
     public static void main(String[] args) {
         
         System.out.println("Iniciando programa...");
-        
         Connection miConexion = ConexionDB.conectar();
-        PersonaDAO persona = new PersonaDAO();
 
         if (miConexion != null) {
-            System.out.println("¡ÉXITO! La conexión se realizó correctamente desde el Main.");   
-
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("------------------------------------------------");
-            System.out.print("Introduce el nombre para filtrar (Enter para ver todos): ");
-            String textoBusqueda = scanner.nextLine();
-
-            System.out.println("Generando reporte...");
             
             try {
+                String nombreBusqueda = JOptionPane.showInputDialog(null, "Introduce el nombre a filtrar:");
+                
+                if (nombreBusqueda == null) {
+                    nombreBusqueda = "";
+                }
+
+                System.out.println("Generando reporte para: " + nombreBusqueda);
+                
                 String rutaReporte = "src/main/java/resources/people_report.jrxml.xml";
 
                 Map<String, Object> parametros = new HashMap<>();
-                parametros.put("paramNombre", "%" + textoBusqueda + "%");
+                parametros.put("paramNombre", nombreBusqueda);
 
                 JasperReport reporte = JasperCompileManager.compileReport(rutaReporte);
 
@@ -45,17 +43,13 @@ public class App {
 
                 JasperViewer.viewReport(print, false); 
                 
-                System.out.println("Reporte generado con éxito.");
-
             } catch (JRException e) {
-                System.err.println("ERROR AL GENERAR REPORTE:");
                 e.printStackTrace();
-            } finally {
-                scanner.close();
+                JOptionPane.showMessageDialog(null, "Error al generar reporte: " + e.getMessage());
             }
             
         } else {
-            System.out.println("FALLO: La conexión vino vacía (null). Revisa el usuario/pass.");
+            System.out.println("FALLO: La conexión es null.");
         }
     }
 }
