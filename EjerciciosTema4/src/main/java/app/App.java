@@ -5,7 +5,6 @@ import repository.ConexionDB;
 import java.sql.Connection;
 import java.util.HashMap;
 
-// --- NUEVOS IMPORTS PARA JASPER ---
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
