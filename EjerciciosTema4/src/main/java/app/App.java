@@ -24,7 +24,7 @@ public class App {
         if (miConexion != null) {
             
             try {
-                String nombreBusqueda = JOptionPane.showInputDialog(null, "Introduce el nombre a filtrar:");
+                String nombreBusqueda = JOptionPane.showInputDialog(null, "Introduce el nombre a filtrar (pulse aceptar para ver todos los registros):");
                 
                 if (nombreBusqueda == null) {
                     nombreBusqueda = "";
