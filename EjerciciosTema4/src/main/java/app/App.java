@@ -1,6 +1,6 @@
 package app;
 
-import dao.PersonaDAO;
+import dto.PersonaDAO;
 import repository.ConexionDB;
 import java.sql.Connection;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package dao;
+package dto;
 
 import repository.ConexionDB; 
 import java.sql.Connection;
