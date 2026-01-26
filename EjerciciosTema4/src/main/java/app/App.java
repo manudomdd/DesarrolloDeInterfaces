@@ -1,12 +1,11 @@
 package app;
 
-import dto.PersonaDAO;
 import repository.ConexionDB;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane; // Importamos la librería para ventanas
-
+import java.awt.GridLayout;
+import javax.swing.*; // Importamos librerías gráficas
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -24,24 +23,50 @@ public class App {
         if (miConexion != null) {
             
             try {
-                String nombreBusqueda = JOptionPane.showInputDialog(null, "Introduce el nombre a filtrar (pulse aceptar para ver todos los registros):");
-                
-                if (nombreBusqueda == null) {
-                    nombreBusqueda = "";
+                JTextField fieldNombre = new JTextField();
+                JTextField fieldEdad = new JTextField();
+
+                JPanel panel = new JPanel(new GridLayout(0, 1)); 
+                panel.add(new JLabel("Nombre:"));
+                panel.add(fieldNombre);
+                panel.add(new JLabel("Edad (vacío para mostrar todo):"));
+                panel.add(fieldEdad);
+
+                int resultado = JOptionPane.showConfirmDialog(null, panel, 
+                        "Filtrar Reporte", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+                if (resultado == JOptionPane.OK_OPTION) {
+                    
+                    String nombreBusqueda = fieldNombre.getText();
+                    String edadStr = fieldEdad.getText();
+                    
+                    Integer edadBusqueda = null;
+
+                    if (edadStr != null && !edadStr.trim().isEmpty()) {
+                        try {
+                            edadBusqueda = Integer.parseInt(edadStr);
+                        } catch (NumberFormatException e) {
+                            System.out.println("Edad no válida, se mostrarán todas.");
+                        }
+                    }
+
+                    System.out.println("Generando reporte para Nombre: " + nombreBusqueda + " | Edad: " + edadBusqueda);
+                    
+                    String rutaReporte = "src/main/java/resources/people_report.jrxml.xml";
+
+                    Map<String, Object> parametros = new HashMap<>();
+                    parametros.put("paramNombre", nombreBusqueda);
+                    parametros.put("paramEdad", edadBusqueda);
+
+                    JasperReport reporte = JasperCompileManager.compileReport(rutaReporte);
+
+                    JasperPrint print = JasperFillManager.fillReport(reporte, parametros, miConexion);
+
+                    JasperViewer.viewReport(print, false); 
+                    
+                } else {
+                    System.out.println("Operación cancelada por el usuario.");
                 }
-
-                System.out.println("Generando reporte para: " + nombreBusqueda);
-                
-                String rutaReporte = "src/main/java/resources/people_report.jrxml.xml";
-
-                Map<String, Object> parametros = new HashMap<>();
-                parametros.put("paramNombre", nombreBusqueda);
-
-                JasperReport reporte = JasperCompileManager.compileReport(rutaReporte);
-
-                JasperPrint print = JasperFillManager.fillReport(reporte, parametros, miConexion);
-
-                JasperViewer.viewReport(print, false); 
                 
             } catch (JRException e) {
                 e.printStackTrace();
