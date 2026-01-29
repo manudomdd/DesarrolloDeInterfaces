@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" 
+              name="ReporteVentasEmpresa" 
+              pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+    
+    <queryString language="SQL">
+        <![CDATA[
+        SELECT 
+            p.categoria,
+            p.nombre AS producto,
+            p.precio_unitario,
+            v.fecha_venta,
+            v.cantidad,
+            (p.precio_unitario * v.cantidad) AS importe_total_linea
+        FROM 
+            ventas v
+        JOIN 
+            productos p ON v.id_producto = p.id_producto
+        ORDER BY 
+            p.categoria ASC, v.fecha_venta DESC
+        ]]>
+    </queryString>
+
+    <field name="categoria" class="java.lang.String"/>
+    <field name="producto" class="java.lang.String"/>
+    <field name="precio_unitario" class="java.math.BigDecimal"/>
+    <field name="fecha_venta" class="java.sql.Date"/>
+    <field name="cantidad" class="java.lang.Integer"/>
+    <field name="importe_total_linea" class="java.math.BigDecimal"/>
+
+    <variable name="Suma_Por_Categoria" class="java.math.BigDecimal" resetType="Group" resetGroup="GrupoCategoria" calculation="Sum">
+        <variableExpression><![CDATA[$F{importe_total_linea}]]></variableExpression>
+    </variable>
+
+    <variable name="Total_General" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[$F{importe_total_linea}]]></variableExpression>
+    </variable>
+
+    <group name="GrupoCategoria">
+        <groupExpression><![CDATA[$F{categoria}]]></groupExpression>
+        
+        <groupHeader>
+            <band height="30">
+                <textField>
+                    <reportElement mode="Opaque" x="0" y="0" width="555" height="30" backcolor="#E0E0E0" uuid="11111111-1111-1111-1111-111111111111"/>
+                    <textElement verticalAlignment="Middle">
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA["Categoría: " + $F{categoria}]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupHeader>
+        
+        <groupFooter>
+            <band height="30">
+                <staticText>
+                    <reportElement x="300" y="0" width="100" height="30" uuid="22222222-2222-2222-2222-222222222222"/>
+                    <textElement textAlignment="Right" verticalAlignment="Middle">
+                        <font isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[Total Categoría:]]></text>
+                </staticText>
+                <textField pattern="###0.00 ¤">
+                    <reportElement x="400" y="0" width="155" height="30" uuid="33333333-3333-3333-3333-333333333333"/>
+                    <textElement textAlignment="Right" verticalAlignment="Middle">
+                        <font isBold="true"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$V{Suma_Por_Categoria}]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupFooter>
+    </group>
+
+    <title>
+        <band height="60" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="555" height="40" uuid="44444444-4444-4444-4444-444444444444"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="22" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Informe de Ventas por Empresa]]></text>
+            </staticText>
+            <textField pattern="MMMMM dd, yyyy">
+                <reportElement x="0" y="40" width="555" height="20" uuid="55555555-5555-5555-5555-555555555555"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="30" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="180" height="30" uuid="66666666-6666-6666-6666-666666666601"/>
+                <textElement verticalAlignment="Middle"><font isBold="true"/></textElement>
+                <text><![CDATA[Producto]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="180" y="0" width="100" height="30" uuid="66666666-6666-6666-6666-666666666602"/>
+                <textElement verticalAlignment="Middle"><font isBold="true"/></textElement>
+                <text><![CDATA[Fecha]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="0" width="70" height="30" uuid="66666666-6666-6666-6666-666666666603"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"><font isBold="true"/></textElement>
+                <text><![CDATA[Cant.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="350" y="0" width="100" height="30" uuid="66666666-6666-6666-6666-666666666604"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"><font isBold="true"/></textElement>
+                <text><![CDATA[Precio Unit.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="450" y="0" width="100" height="30" uuid="66666666-6666-6666-6666-666666666605"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"><font isBold="true"/></textElement>
+                <text><![CDATA[Total Línea]]></text>
+            </staticText>
+            <line>
+                <reportElement x="0" y="29" width="555" height="1" uuid="77777777-7777-7777-7777-777777777777"/>
+            </line>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="180" height="20" uuid="88888888-8888-8888-8888-888888888801"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="180" y="0" width="100" height="20" uuid="88888888-8888-8888-8888-888888888802"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="0" width="70" height="20" uuid="88888888-8888-8888-8888-888888888803"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+            </textField>
+            <textField pattern="###0.00 ¤">
+                <reportElement x="350" y="0" width="100" height="20" uuid="88888888-8888-8888-8888-888888888804"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{precio_unitario}]]></textFieldExpression>
+            </textField>
+            <textField pattern="###0.00 ¤">
+                <reportElement x="450" y="0" width="100" height="20" uuid="88888888-8888-8888-8888-888888888805"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{importe_total_linea}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="300" splitType="Stretch">
+            <line>
+                <reportElement x="0" y="5" width="555" height="1" uuid="99999999-9999-9999-9999-999999999999"/>
+            </line>
+            
+            <staticText>
+                <reportElement x="250" y="10" width="150" height="30" uuid="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[TOTAL GENERAL:]]></text>
+            </staticText>
+            <textField pattern="###0.00 ¤">
+                <reportElement x="400" y="10" width="155" height="30" forecolor="#CC0000" uuid="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{Total_General}]]></textFieldExpression>
+            </textField>
+
+            <barChart>
+                <chart evaluationTime="Report" customizerClass="" renderType="draw">
+                    <reportElement x="0" y="60" width="555" height="230" uuid="cccccccc-cccc-cccc-cccc-cccccccccccc"/>
+                    <chartTitle>
+                        <titleExpression><![CDATA["Ventas por Categoría"]]></titleExpression>
+                    </chartTitle>
+                    <chartSubtitle/>
+                    <chartLegend/>
+                </chart>
+                <categoryDataset>
+                    <dataset resetType="Report" incrementType="Group" incrementGroup="GrupoCategoria"/>
+                    <categorySeries>
+                        <seriesExpression><![CDATA["Ingresos"]]></seriesExpression>
+                        <categoryExpression><![CDATA[$F{categoria}]]></categoryExpression>
+                        <valueExpression><![CDATA[$V{Suma_Por_Categoria}]]></valueExpression>
+                    </categorySeries>
+                </categoryDataset>
+                <barPlot>
+                    <plot/>
+                    <itemLabel/>
+                    <categoryAxisFormat>
+                        <axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+                    </categoryAxisFormat>
+                    <valueAxisFormat>
+                        <axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+                    </valueAxisFormat>
+                </barPlot>
+            </barChart>
+        </band>
+    </summary>
+</jasperReport>
